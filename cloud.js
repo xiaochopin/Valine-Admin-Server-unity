@@ -1,4 +1,6 @@
 const AV = require('leanengine');
+
+console.log('cloud.js loaded: registering triggers and cloud functions');
 const mail = require('./utilities/send-mail');
 const Comment = AV.Object.extend('Comment');
 const request = require('request');
