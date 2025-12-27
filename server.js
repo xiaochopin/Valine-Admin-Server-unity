@@ -2,11 +2,24 @@
 
 var AV = require('leanengine');
 
+// 默认使用 LEANCLOUD_*，如有 TARGET_* 则覆盖，便于自定义环境
+var APP_ID = process.env.TARGET_LEANCLOUD_APP_ID || process.env.LEANCLOUD_APP_ID;
+var APP_KEY = process.env.TARGET_LEANCLOUD_APP_KEY || process.env.LEANCLOUD_APP_KEY;
+var MASTER_KEY = process.env.TARGET_LEANCLOUD_MASTER_KEY || process.env.LEANCLOUD_APP_MASTER_KEY || process.env.LEANCLOUD_MASTER_KEY;
+var SERVER_URLS = process.env.TARGET_LEANCLOUD_API_SERVER || process.env.LEANCLOUD_API_SERVER;
+
 AV.init({
-  appId: process.env.TARGET_LEANCLOUD_APP_ID,
-  appKey: process.env.TARGET_LEANCLOUD_APP_KEY,
-  masterKey: process.env.TARGET_LEANCLOUD_MASTER_KEY,
-  serverURLs: process.env.TARGET_LEANCLOUD_API_SERVER
+  appId: APP_ID,
+  appKey: APP_KEY,
+  masterKey: MASTER_KEY,
+  serverURLs: SERVER_URLS
+});
+
+console.log('LeanCloud init:', {
+  appId: APP_ID ? APP_ID.slice(0, 6) + '...' : 'MISSING',
+  appKey: APP_KEY ? APP_KEY.slice(0, 6) + '...' : 'MISSING',
+  masterKey: MASTER_KEY ? '***' : 'MISSING',
+  serverURLs: SERVER_URLS || 'DEFAULT'
 });
 
 // 如果不希望使用 masterKey 权限，可以将下面一行删除
