@@ -3,6 +3,7 @@ Valine Admin Unity是 [Valine 评论系统](https://deserts.io/diy-a-comment-sys
 ## 相比原版需要额外配置的环境变量
 
 变量 | 说明
+--- | ---
 TARGET_LEANCLOUD_APP_ID | [必填]目标应用ID
 TARGET_LEANCLOUD_APP_KEY | [必填]目标应用Key
 TARGET_LEANCLOUD_MASTER_KEY | [必填]目标应用MasterKey
